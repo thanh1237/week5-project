@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Carousel, ResponsiveEmbed } from "react-bootstrap";
+
 import { useHistory } from "react-router-dom";
-import api from "../apiService";
+
 import PaginationBar from "../components/PaginationBar";
 import SearchForm from "../components/SearchForm";
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Figure } from "react-bootstrap";
 
 const AboutMovie = () => {
   const [trailer, setTrailer] = useState(null);
@@ -12,8 +11,7 @@ const AboutMovie = () => {
 
   const api = `5193ab5a3642f863333b0992eb6a8a01`;
   const url = `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=${api}&language=en-US`;
-  const baseUrl = `https://image.tmdb.org/t/p/w500`;
-  const url1 = `https://api.themoviedb.org/3/movie/${params.id}?api_key=${api}&language=en-US&page=${pageNum}`;
+
   // const baseUrl = `https://image.tmdb.org/t/p/w500`;
 
   useEffect(() => {

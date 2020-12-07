@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
 import PublicNavbar from "./components/PublicNavbar";
