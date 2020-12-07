@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import Switch from "react-bootstrap/esm/Switch";
+import PublicNavbar from "./components/PublicNavbar";
+import Home from "./pages/Home";
+import TopRated from "./pages/TopRated";
+import Upcoming from "./pages/Upcoming";
+import AboutMovie from "./pages/AboutMovie";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="background">
+        <PublicNavbar />
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/toprated" component={TopRated} />
+          <Route exact path="/upcoming" component={Upcoming} />
+          <Route exact path="/movies/:id" component={AboutMovie} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
