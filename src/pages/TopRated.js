@@ -64,13 +64,14 @@ const TopRated = () => {
             movies.map((movie) => {
               return (
                 <div
-                  class="wrapper"
+                  className="wrapper"
                   style={{ width: "18rem" }}
                   onClick={() => jumpToAbout(movie.id)}
+                  key={movie.id}
                 >
-                  <div class="card ml-3 mt-5">
+                  <div className="card ml-3 mt-5">
                     <img src={`${baseUrl}${movie.poster_path}`} />
-                    <div class="info">
+                    <div className="info">
                       <h1>{movie.title}</h1>
                       <p>{movie.overview}</p>
                     </div>

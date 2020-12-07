@@ -16,6 +16,7 @@ const Home = () => {
 
   const api = `5193ab5a3642f863333b0992eb6a8a01`;
   let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${api}&language=en-US&page=${pageNum}`;
+
   const baseUrl = `https://image.tmdb.org/t/p/w500`;
 
   const jumpToAbout = (id) => {
@@ -35,8 +36,11 @@ const Home = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        if (query)
-          url = `https://api.themoviedb.org/3/search/movie?api_key=${api}&query=${query}`;
+        if (query) {
+          let term = `https://api.themoviedb.org/3/search/movie?api_key=${api}&query=${query}`;
+          url = term;
+        }
+
         console.log("query", query);
         let res = await fetch(url);
         let data = await res.json();
@@ -67,13 +71,14 @@ const Home = () => {
           movies.map((movie) => {
             return (
               <li
-                class="wrapper"
+                className="wrapper"
                 style={{ width: "18rem" }}
                 onClick={() => jumpToAbout(movie.id)}
+                key={movie.id}
               >
-                <div class="card ml-3 mt-5">
-                  <img src={`${baseUrl}${movie.poster_path}`} />
-                  <div class="info">
+                <div className="card ml-3 mt-5">
+                  <img src={`${baseUrl}${movie.poster_path}`} alt="" />
+                  <div className="info">
                     <h1>{movie.title}</h1>
                     <p>{movie.overview}</p>
                   </div>

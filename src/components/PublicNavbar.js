@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, NavLink } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import logo from "../images/logo.svg";
 import githubIco from "../images/github_icon.png";
 import { Link } from "react-router-dom";
