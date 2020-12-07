@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 import { useHistory } from "react-router-dom";
-
 import PaginationBar from "../components/PaginationBar";
 import SearchForm from "../components/SearchForm";
+import api from "../apiService";
+
+const baseUrl = `https://image.tmdb.org/t/p/w500`;
 
 const Home = () => {
   const [movies, setMovies] = useState(null);
@@ -13,11 +14,6 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
-
-  const api = `5193ab5a3642f863333b0992eb6a8a01`;
-  let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${api}&language=en-US&page=${pageNum}`;
-
-  const baseUrl = `https://image.tmdb.org/t/p/w500`;
 
   const jumpToAbout = (id) => {
     history.push(`/movies/${id}`);
@@ -36,14 +32,12 @@ const Home = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        if (query) {
-          let term = `https://api.themoviedb.org/3/search/movie?api_key=${api}&query=${query}`;
-          url = term;
-        }
-
+        let url = `movie/now_playing?language=en-US&page=${pageNum}`;
+        if (query) url = `/search/movie?query=${query}`;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         console.log("query", query);
-        let res = await fetch(url);
-        let data = await res.json();
+        let res = await api.get(url);
+        let data = res.data;
         console.log("data", data);
         setMovies(data.results);
         setTotalPageNum(data.total_pages);
@@ -55,7 +49,6 @@ const Home = () => {
     };
     fetchData();
   }, [pageNum, query]);
-  console.log("movies1", movies);
 
   return (
     <>
@@ -65,7 +58,6 @@ const Home = () => {
         handleSearchChange={handleSearchInputChange}
         handleSubmit={handleSubmit}
       />
-
       <ul className="d-flex flex-wrap ">
         {movies &&
           movies.map((movie) => {

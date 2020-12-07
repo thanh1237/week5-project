@@ -3,7 +3,6 @@
 }
 
 .wrapper {
-  display: -webkit-box;
   display: flex;
   width: 90%;
   justify-content: space-around;

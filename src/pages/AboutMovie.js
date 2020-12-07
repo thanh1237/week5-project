@@ -30,12 +30,12 @@ const AboutMovie = () => {
   return (
     <>
       {trailer ? (
-        <>
+        <div style={{ height: "100%" }}>
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
           />
           <h1>{`${trailer[0].name}`}</h1>
-        </>
+        </div>
       ) : (
         <h1>No Trailer :((((</h1>
       )}
